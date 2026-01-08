@@ -262,27 +262,45 @@ ul {
 }
 
 .team-section {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 2rem auto 0 auto;
   padding: 2rem 1rem 1rem 1rem;
   text-align: center;
 }
 .team-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem 2rem;
+  justify-items: center;
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
 }
+
+@media (min-width: 1000px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .team-member {
   background: var(--cardBg);
   border-radius: 18px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  padding: 1.5rem 1rem;
-  width: 200px;
+  padding: 2rem 1.2rem 1.5rem 1.2rem;
+  width: 100%;
+  max-width: 260px;
+  min-height: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .team-member:hover {
@@ -290,29 +308,66 @@ ul {
   box-shadow: 0 6px 24px rgba(0,0,0,0.13);
 }
 .team-img {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
   background: #eee;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
 .team-title {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin: 0.5rem 0 0.3rem 0;
   color: var(--primary);
 }
 .team-desc {
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   color: var(--fontColor);
   margin: 0;
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.6;
+  white-space: normal;
 }
 .team-role {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--secondary);
   font-weight: 600;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.team-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none !important;
+  color: inherit;
+  cursor: pointer;
+}
+.team-link:visited,
+.team-link:active,
+.team-link:focus,
+.team-link:hover {
+  text-decoration: none !important;
+  color: inherit;
+}
+.team-link h2,
+.team-link .team-role,
+.team-link .team-desc {
+  text-decoration: none !important;
+}
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem 1rem;
+  }
+  .team-member {
+    max-width: 95vw;
+    min-height: 300px;
+  }
 }
 @media (max-width: 800px) {
   .team-grid {
@@ -325,6 +380,22 @@ ul {
     max-width: 350px;
   }
 }
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem 0;
+  }
+  .team-member {
+    max-width: 98vw;
+    min-height: 220px;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+  .team-img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
 .profile-section {
   display: flex;
   flex-direction: column;
@@ -336,8 +407,72 @@ ul {
 
 .team-desc {
   font-size: 1.1rem;
-  text-align: justify; 
   max-width: 500px;
   line-height: 1.7; 
   white-space: pre-line; 
+}
+
+.logboek-section {
+  max-width: 900px;
+  margin: 2.5rem auto 0 auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  background: var(--cardBg);
+  border-radius: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  animation: fadeInUp 1.2s;
+}
+.logboek-section h1 {
+  color: var(--primary);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+.logboek-section section {
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+.logboek-section section:last-child {
+  border-bottom: none;
+}
+.logboek-section h2 {
+  color: var(--secondary);
+  font-size: 1.25rem;
+  margin-bottom: 0.7rem;
+  margin-top: 0;
+}
+.logboek-section ul {
+  margin: 0 0 0.5rem 0;
+  padding-left: 1.2rem;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+.logboek-section li {
+  margin-bottom: 0.4rem;
+}
+@media (max-width: 700px) {
+  .logboek-section {
+    padding: 1.2rem 0.5rem;
+    border-radius: 12px;
+  }
+  .logboek-section h1 {
+    font-size: 1.3rem;
+  }
+}
+
+.card-style {
+  background: var(--cardBg);
+  border-radius: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 1.2s;
+}
+@media (max-width: 700px) {
+  .card-style {
+    padding: 1.2rem 0.5rem;
+    border-radius: 12px;
+  }
 }
