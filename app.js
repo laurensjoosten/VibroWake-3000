@@ -26,3 +26,28 @@ switcher.addEventListener('click', function() {
     localStorage.setItem('theme', className);
     console.log('current class name: ' + className);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const videos = document.querySelectorAll('.carousel-video');
+  const leftBtn = document.querySelector('.carousel-btn.left');
+  const rightBtn = document.querySelector('.carousel-btn.right');
+  let current = 0;
+
+  function showVideo(idx) {
+    videos.forEach((vid, i) => {
+      vid.classList.toggle('active', i === idx);
+    });
+  }
+
+  leftBtn.addEventListener('click', function() {
+    current = (current - 1 + videos.length) % videos.length;
+    showVideo(current);
+  });
+
+  rightBtn.addEventListener('click', function() {
+    current = (current + 1) % videos.length;
+    showVideo(current);
+  });
+
+  showVideo(current);
+});
