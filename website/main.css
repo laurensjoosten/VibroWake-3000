@@ -669,3 +669,15 @@ ul {
 .dot.active, .dot:hover {
   background-color: #00C9A7;
 }
+
+.focus-ear {
+  object-position: 85% 40%; /* schuift het beeld verder naar rechts en iets naar boven */
+  object-fit: cover;
+  scale: 1.25;
+}
+@media (max-width: 700px) {
+  .focus-ear {
+    object-position: 85% 40%;
+    scale: 1.12;
+  }
+}
